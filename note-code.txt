@@ -1,0 +1,39 @@
+php artisan make:seeder NomSeeder
+Role::create(['nom' => 'Administrateur'])
+$this -> call([
+    RoleSeeder::class,
+    
+    ])
+php artisan migrate:fresh
+
+php artisan migrate --seed
+
+php artisan db:seed
+
+php artisan db:seed --class= RoleSeeder
+
+require  __DIR__.'/fichier.php'; inclure des fichiers php
+
+
+
+Route::prefix('admin')->groupe(function(){
+    mettre les routes à l'intérieur
+});
+
+
+@php
+              // 🔥 JOINTURE DIRECTE DANS LA VUE
+              $role = DB::table('roles')
+                ->where('id', Auth::user()->role)
+                ->first();
+              echo $role ? $role->libelle : 'Utilisateur';
+            @endphp
+
+
+php artisan make:middleware Admin - créer un middleware
+
+$middleware->alias([
+    'admin''=> Admin::class,
+])
+->middleware('admin')
+

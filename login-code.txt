@@ -1,0 +1,28 @@
+public function login(Request $request)
+    {
+        // Valider les données
+        $credentials = $request->validate([
+            'email' => 'required|email',
+            'password' => 'required',
+        ]);
+
+        // Tenter la connexion
+        if (Auth::attempt($credentials, $request->boolean('remember'))) {
+            $request->session()->regenerate();
+            
+            // 🔥 CHARGER LA RELATION ROLE AVEC JOINTURE
+        $user = Auth::user()->load('role');
+        
+        // Maintenant $user->role est un OBJET Role, pas un integer
+        if ($user->role && $user->role->libelle === 'Administrateur') {
+            return redirect()->intended('/dashboard');
+        } else {
+            return redirect()->intended('/');
+        }
+        }
+
+        // Si échec de connexion
+        return back()->withErrors([
+            'email' => 'Les identifiants ne correspondent pas.',
+        ]);
+    }
