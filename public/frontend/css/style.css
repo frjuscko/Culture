@@ -722,6 +722,12 @@ footer p:hover {
         height: 20px;
         width: 20px;
     }
+    .search-bar{
+        padding: 40px;
+    }
+    .search-input{
+        width: 200px;
+    }
     footer{
         padding: 40px;
     }

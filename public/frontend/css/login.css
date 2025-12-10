@@ -32,6 +32,20 @@ main{
     background-attachment: fixed;
     overflow: hidden;
 }
+.logo{
+    width: 60px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    overflow: hidden;
+    background: var(--neutre);
+    border: 1px solid var(--accent);
+}
+.logo img{
+    width: 50px;
+}
 .bg{
     position: absolute;
     width: 100%;
@@ -43,15 +57,18 @@ main{
     border-radius: 20px;
     height: 70vh;
     width: 24vw;
-    overflow: hidden;
-    display: flex;
     position: relative;
+    transition: .5s ease;
+    overflow: hidden;
+}
+.slides{
+    display: flex;
     transition: .5s ease;
 }
 .active{
     height: 90vh;
 }
-.login, .register{
+.slide{
     min-width: 100%;
     min-height: 100%;
     transition: .5s ease;
@@ -149,6 +166,9 @@ main{
     top: 10%;
     left: 10%;
     color: var(--neutre);
+    display: flex;
+    align-items: center;
+    gap: 10px;
 }
 .textes a{
     color: var(--neutre);
@@ -206,4 +226,13 @@ main{
     background: #fff3cd;
     color: #856404;
     border: 1px solid #ffeaa7;
+}
+
+@media (max-width: 768px) {
+    .container{
+        width: 90vw;
+    }
+    .textes{
+        top: 5%;
+    }
 }

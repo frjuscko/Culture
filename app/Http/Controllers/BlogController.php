@@ -13,8 +13,7 @@ class BlogController extends Controller
 
         $contenus = Contenu::with(['getType', 'getRegion', 'getLangue', 'medias', 'getAuteur'])
         ->when($search, function($query, $search) {
-            return $query->where('titre', 'like', "%{$search}%")
-                        ->orWhere('getType.libelle', 'like', "%{$search}%");
+            return $query->where('titre', 'like', "%{$search}%");
         })
         ->where('statut', 'validé')
         ->orderBy('created_at', 'DESC')

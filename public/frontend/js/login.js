@@ -7,14 +7,12 @@ const submit = document.getElementById('reg');
 reg.disabled = true;
 
 document.querySelector('.reg-btn').addEventListener('click', () =>{
-    document.querySelector('.login').style.transform = "translateX(-400px)";
-    document.querySelector('.register').style.transform = "translateX(-368px)";
+    document.querySelector('.slides').style.transform = "translateX(-100%)";
     document.querySelector('.container').classList.add('active');
 })
 
 document.querySelector('.log-btn').addEventListener('click', () =>{
-    document.querySelector('.login').style.transform = "translateX(0)";
-    document.querySelector('.register').style.transform = "translateX(0)";
+    document.querySelector('.slides').style.transform = "translateX(0)";
     document.querySelector('.container').classList.remove('active');
 })
 

@@ -17,7 +17,7 @@
             </a>
         </div>
         <nav class="web">
-            <a href>Á propos</a>
+            <a href="/about">Á propos</a>
             <a href="/blog">Blog</a>
             <a href>Galerie</a>
             @auth
@@ -50,7 +50,7 @@
                 </svg></button>
             <div class="mobile-menu">
                 <ul>
-                    <li><a href>Á propos</a></li>
+                    <li><a href="/about">Á propos</a></li>
                     <li><a href="/blog">Blog</a></li>
                     <li><a href>Galerie</a></li>
                     <li>@auth

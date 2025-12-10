@@ -5,7 +5,7 @@
         <p><a href="/">Accueil</a><span>></span><a href=""></a><span>Blog</span></p>
     </div>
     <div class="search-bar">
-        <form action="{{ route('utilisateurs') }}" method="GET">
+        <form action="{{ route('blog') }}" method="GET">
             <input type="text" name="search" value="{{ $search }}" placeholder="Rechercher.." class="search-input">
             <button type="submit" class="search-btn"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
                     fill="currentColor">
@@ -74,6 +74,10 @@
                     </div>
                 @endforeach
             </div>
+            {{-- PAGINATION LARAVEL NATIVE --}}
+                <div class="pagination">
+                    {{ $contenus->links('vendor.pagination.custom') }}
+                </div>
         @else
             <!-- Message si aucun contenu -->
             <div style="text-align: center; padding: 40px; background: #f8f9fa; border-radius: 10px;">
