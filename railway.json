@@ -1,0 +1,7 @@
+{
+    "build": {
+        "builder": "railpack",
+        "buildCommand": "composer install --optimize-autoloader --no-scripts --no-interaction",
+        "phpVersion": "8.4"
+    }
+}
