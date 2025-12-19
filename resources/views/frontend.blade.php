@@ -28,7 +28,7 @@
                         style="width: 40px; height: 40px; border-radius: 50%; object-fit: cover;">
                     <div class="texte">
                         <p>{{ Auth::user()->prenom }} {{ Auth::user()->nom }}</p>
-                        <p id="role">{{ Auth::user()->roleinfo->libelle }}</p>
+                        <p id="role">{{ Auth::user()->getRole->libelle }}</p>
                     </div>
                 </a>
                 <a href="/logout"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
@@ -61,7 +61,7 @@
                         style="width: 40px; height: 40px; border-radius: 50%; object-fit: cover;">
                     <div class="texte">
                         <p>{{ Auth::user()->prenom }} {{ Auth::user()->nom }}</p>
-                        <p id="role">{{ Auth::user()->roleinfo->libelle }}</p>
+                        <p id="role">{{ Auth::user()->getRole->libelle }}</p>
                     </div>
                 </a>
                 <a href="/logout"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
