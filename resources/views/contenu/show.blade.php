@@ -95,7 +95,7 @@
                             <div class="commentaire-header">
 
                                 <span class="commentaire-auteur">
-                                    <img src="{{ $commentaire->user->photo_url }}" alt="{{ $commentaire->user->prenom }}"
+                                    <img src="{{ $commentaire->user->photo }}" alt="{{ $commentaire->user->prenom }}"
                                         style="width: 30px; height: 30px; border-radius: 50%; margin-right: 10px;">
                                     {{ $commentaire->user->prenom }} {{ $commentaire->user->nom }}
                                 </span>
@@ -146,7 +146,7 @@
                 <div class="auteur">
                     <h2>À propos de l'auteur</h2>
                     <div class="photo">
-                        <img src="{{ $contenu->getAuteur->photo_url }}" alt="{{ $contenu->getAuteur->prenom }}"
+                        <img src="{{ $contenu->getAuteur->photo }}" alt="{{ $contenu->getAuteur->prenom }}"
                             style="width: 100px; height: 100px; border-radius: 50%;">
                     </div>
                     <div class="texte">
