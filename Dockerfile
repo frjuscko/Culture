@@ -45,8 +45,6 @@ COPY . .
 # Installer les dépendances PHP
 RUN composer install --no-dev --optimize-autoloader
 
-# Installer et compiler les assets Node.js
-RUN npm install && npm run build
 
 # Permissions
 RUN chown -R www-data:www-data /var/www/html/storage /var/www/html/bootstrap/cache
