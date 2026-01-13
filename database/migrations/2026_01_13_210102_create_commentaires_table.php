@@ -11,19 +11,23 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('parlers', function (Blueprint $table) {
+        Schema::create('commentaires', function (Blueprint $table) {
             $table->id();
 
-            $table->unsignedBigInteger('region');
-            $table->foreign('region')
+            $table->string('statut');
+            $table->text('texte');
+            $table->integer('note')->nullable();
+
+            $table->unsignedBigInteger('contenu');       
+            $table->foreign('contenu')
               ->references('id')
-              ->on('regions')
+              ->on('contenus')
               ->onDelete('cascade');
 
-            $table->unsignedBigInteger('langue');       
-            $table->foreign('langue')
+            $table->unsignedBigInteger('utilisateur');       
+            $table->foreign('utilisateur')
               ->references('id')
-              ->on('langues')
+              ->on('users')
               ->onDelete('cascade');
 
             $table->timestamps();
@@ -35,6 +39,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('parlers');
+        Schema::dropIfExists('commentaires');
     }
 };

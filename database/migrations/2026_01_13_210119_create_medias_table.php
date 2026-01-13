@@ -15,9 +15,8 @@ return new class extends Migration
             $table->id();
 
             $table->string('type');
-            $table->text('desciption');
+            $table->text('description')->nullable();
             $table->string('fichier');
-            $table->datetime('datepub');
 
             $table->unsignedBigInteger('contenu');       
             $table->foreign('contenu')

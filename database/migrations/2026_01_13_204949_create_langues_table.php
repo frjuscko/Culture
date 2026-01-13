@@ -11,9 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::table('users', function (Blueprint $table) {
-            $table->string('photo')->nullable()->after('prenom');
-            $table->integer('tel')->nullable()->after('email');
+        Schema::create('langues', function (Blueprint $table) {
+            $table->id();
+            $table->string('code');
+            $table->string('nom');
+            $table->text('description')->nullable();
+            $table->timestamps();
         });
     }
 
@@ -22,8 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::table('users', function (Blueprint $table) {
-            $table->dropColumn(['photo', 'tel']);
-        });
+        Schema::dropIfExists('langues');
     }
 };

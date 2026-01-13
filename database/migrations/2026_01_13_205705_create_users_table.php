@@ -19,8 +19,9 @@ return new class extends Migration
             $table->string('sexe');
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
+            $table->string('photo')->nullable();
+            $table->integer('tel')->nullable();
             $table->string('password');
-            $table->datetime('dateins');
 
             // Créer la colonne
             $table->unsignedBigInteger('langue');

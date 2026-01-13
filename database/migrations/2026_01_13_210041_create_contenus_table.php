@@ -15,10 +15,9 @@ return new class extends Migration
             $table->id();
 
             $table->string('titre');
-            $table->text('texte');
-            $table->datetime('datepub');
+            $table->text('texte')->nullable();
             $table->string('statut');
-            $table->datetime('dateval');
+            $table->datetime('dateval')->nullable();
 
             $table->unsignedBigInteger('region');
             $table->foreign('region')
@@ -44,13 +43,13 @@ return new class extends Migration
               ->on('users')
               ->onDelete('cascade');
 
-            $table->unsignedBigInteger('moderateur');       
+            $table->unsignedBigInteger('moderateur')->nullable();       
             $table->foreign('moderateur')
               ->references('id')
               ->on('users')
               ->onDelete('cascade');
             
-            $table->unsignedBigInteger('parent')->default(0);       
+            $table->unsignedBigInteger('parent')->nullable()->default(0);       
             $table->foreign('parent')
               ->references('id')
               ->on('contenus')
