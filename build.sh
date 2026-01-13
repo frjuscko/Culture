@@ -10,3 +10,5 @@ php artisan view:cache
 
 # Exécuter les migrations de base de données
 php artisan migrate --force
+
+php artisan storage:link
