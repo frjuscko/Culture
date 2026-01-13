@@ -74,7 +74,7 @@
     {{-- STATISTIQUES --}}
 
     @if(Auth::check() && Auth::id() == $user->id)
-        <div class="stats-grid"></div>
+        <div class="stats-grid">
         <div class="stat-card">
             <span class="stat-number">{{ $stats['contenus'] }}</span>
             <span class="stat-label">Contenus publiés</span>
