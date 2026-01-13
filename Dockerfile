@@ -1,3 +1,7 @@
+# ---------- Composer stage ----------
+FROM composer:2 AS composer
+
+# ---------- App stage ----------
 FROM php:8.2-apache
 
 # Installer Node.js
@@ -19,17 +23,22 @@ RUN apt-get update && apt-get install -y \
 # Activer mod_rewrite
 RUN a2enmod rewrite
 
-# Installer Composer (IMPORTANT)
-COPY --from=composer:2 /usr/bin/composer /usr/bin/composer
+# Installer Composer
+COPY --from=composer /usr/bin/composer /usr/bin/composer
 
-# Apache config (port dynamique Render)
+# Apache config (port Render)
 COPY ./apache.conf /etc/apache2/sites-available/000-default.conf
 
 WORKDIR /var/www/html
-COPY . .
+
+# Copier uniquement les fichiers Composer (cache Docker)
+COPY composer.json composer.lock ./
 
 # Installer dépendances Laravel
-RUN composer install --no-dev --optimize-autoloader
+RUN composer install --no-dev --optimize-autoloader --no-interaction
+
+# Copier le reste du projet
+COPY . .
 
 # Permissions Laravel
 RUN chown -R www-data:www-data storage bootstrap/cache
