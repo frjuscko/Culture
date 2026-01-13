@@ -8,42 +8,34 @@ FROM php:8.2-apache
 RUN curl -fsSL https://deb.nodesource.com/setup_20.x | bash - \
     && apt-get install -y nodejs
 
-# Installer extensions PHP
+# Extensions PHP
 RUN apt-get update && apt-get install -y \
     libpng-dev \
     libjpeg-dev \
     libfreetype6-dev \
     libzip-dev \
-    zip \
-    unzip \
-    git \
+    zip unzip git \
     && docker-php-ext-configure gd --with-freetype --with-jpeg \
     && docker-php-ext-install gd zip pdo pdo_mysql
 
-# Activer mod_rewrite
 RUN a2enmod rewrite
 
 # Installer Composer
 COPY --from=composer /usr/bin/composer /usr/bin/composer
 
-# Apache config (port Render)
+# Apache config
 COPY ./apache.conf /etc/apache2/sites-available/000-default.conf
 
 WORKDIR /var/www/html
 
-# Copier uniquement les fichiers Composer (cache Docker)
-COPY composer.json composer.lock ./
+# ✅ COPIER LE PROJET AVANT
+COPY . .
 
 # Installer dépendances Laravel
 RUN composer install --no-dev --optimize-autoloader --no-interaction
 
-# Copier le reste du projet
-COPY . .
-
-# Permissions Laravel
+# Permissions
 RUN chown -R www-data:www-data storage bootstrap/cache
 
-# Port dynamique Render
 ENV PORT=10000
-
 CMD apache2-foreground
