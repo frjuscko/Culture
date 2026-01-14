@@ -35,7 +35,8 @@ COPY . .
 RUN composer install --no-dev --optimize-autoloader --no-interaction
 
 # Permissions
-RUN chown -R www-data:www-data storage bootstrap/cache
+RUN chown -R www-data:www-data storage bootstrap/cache public/storage
+
 
 ENV PORT=10000
 CMD php artisan migrate --force && php artisan storage:link && apache2-foreground
