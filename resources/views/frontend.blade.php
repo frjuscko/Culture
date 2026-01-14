@@ -13,7 +13,7 @@
     <header class="navbar">
         <div class="logo">
             <a href="{{ route('home') }}">
-                <img src="{{ asset('Logo/Logo CB.PNG') }}" alt="">
+                <img src="{{ asset('logo/logo_cb.png') }}" alt="">
             </a>
         </div>
         <nav class="web">
