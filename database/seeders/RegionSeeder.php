@@ -13,6 +13,6 @@ class RegionSeeder extends Seeder
      */
     public function run(): void
     {
-        Region::create(['nom' => 'Litoral', 'description' => '..',]);
+        Region::create(['nom' => 'Litoral', 'description' => '..', 'localisation' => 'Bénin litoral', 'superficie' => '123 km', 'population' => '10000']);
     }
 }
