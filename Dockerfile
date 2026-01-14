@@ -37,6 +37,5 @@ RUN composer install --no-dev --optimize-autoloader --no-interaction
 # Permissions
 RUN chown -R www-data:www-data storage bootstrap/cache
 
-EXPOSE 80
-
+ENV PORT=10000
 CMD apache2-foreground
