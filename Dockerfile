@@ -38,4 +38,4 @@ RUN composer install --no-dev --optimize-autoloader --no-interaction
 RUN chown -R www-data:www-data storage bootstrap/cache
 
 ENV PORT=10000
-CMD php artisan migrate --force && php artisan db:seed --force && apache2-foreground
+CMD php artisan migrate --force && php artisan storage:link && apache2-foreground
