@@ -26,10 +26,6 @@ RUN mkdir -p storage/app/public storage/framework/cache storage/framework/sessio
 # Créer le lien symbolique storage -> storage/app/public
 RUN php artisan storage:link
 
-# Optimisation Laravel
-RUN php artisan config:cache && \
-    php artisan route:cache && \
-    php artisan view:cache
 
 # Permissions sur tous les dossiers nécessaires
 RUN chown -R www-data:www-data storage bootstrap/cache public
