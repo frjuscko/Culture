@@ -15,7 +15,7 @@
 <body>
     <div class="cover"></div>
     <div class="profil-header">
-        <img src="{{ asset('storage/' . $user->photo) }}" alt="{{ $user->prenom }}" class="profil-avatar">
+        <img src="{{ Storage::url(Auth::user()->photo) }}" alt="{{ $user->prenom }}" class="profil-avatar">
         <div class="profil-info">
             <h1>{{ $user->prenom }} {{ $user->nom }}</h1>
             <p class="profil-role">{{ $user->roleinfo->libelle ?? 'Utilisateur' }}</p>

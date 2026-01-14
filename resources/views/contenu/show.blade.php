@@ -95,7 +95,7 @@
                             <div class="commentaire-header">
 
                                 <span class="commentaire-auteur">
-                                    <img src="{{ $commentaire->user->photo }}" alt="{{ $commentaire->user->prenom }}"
+                                    <img src="{{ Storage::url($commentaire->user->photo) }}" alt="{{ $commentaire->user->prenom }}"
                                         style="width: 30px; height: 30px; border-radius: 50%; margin-right: 10px;">
                                     {{ $commentaire->user->prenom }} {{ $commentaire->user->nom }}
                                 </span>

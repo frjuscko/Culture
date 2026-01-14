@@ -22,7 +22,7 @@
             <button></button>
             <div class="user">
                 {{-- Utilise l'avatar de l'utilisateur connecté --}}
-          <img src="{{ asset('storage/'.Auth::user()->photo) }}" alt="{{ Auth::user()->prenom }}"
+          <img src="{{ Storage::url(Auth::user()->photo) }}" alt="{{ Auth::user()->prenom }}"
                         style="width: 40px; height: 40px; border-radius: 50%; object-fit: cover;">
                 <div class="texte">
                     <p>{{ Auth::user()->prenom }} {{ Auth::user()->nom }}</p>

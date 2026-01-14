@@ -184,7 +184,7 @@
                 <div class="current-photo">
                     <label>Photo de profil actuelle</label>
                     <div class="avatar-upload" onclick="document.getElementById('photo').click()">
-                        <img src="{{ asset('storage/'.Auth::user()->photo) }}" alt="{{ Auth::user()->prenom }}" 
+                        <img src="{{ Storage::url(Auth::user()->photo) }}" alt="{{ Auth::user()->prenom }}" 
                              alt="Photo de profil" 
                              class="avatar-preview" 
                              id="avatarPreview">
