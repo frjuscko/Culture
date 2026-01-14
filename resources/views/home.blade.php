@@ -60,7 +60,7 @@
             <div class="down"></div>
         </div>
         <div class="part-right">
-            <img src="{{ URL::asset('Logo/Logo CB.PNG') }}" alt="">
+            <img src="{{ asset('logo/logo_cb.png') }}" alt="">
         </div>
     </div>
 

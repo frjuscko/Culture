@@ -14,7 +14,7 @@
     <div class="menu">
       <div class="logo">
         <a href="{{ route('home') }}">
-          <img src="{{ URL::asset('Logo/Logo CB.PNG') }}" alt="">
+          <img src="{{ asset('logo/logo_cb.png') }}" alt="">
         </a>
       </div>
       <div class="pages">
