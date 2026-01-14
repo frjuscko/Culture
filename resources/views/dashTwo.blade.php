@@ -13,7 +13,7 @@
         <div class="part-left">
             <div class="logo">
         <a href="{{ route('home') }}">
-          <img src="{{ URL::asset('Logo/Logo CB.PNG') }}" alt="">
+          <img src="{{ URL::asset('logo/logo.png') }}" alt="">
         </a>
       </div>
         </div>
