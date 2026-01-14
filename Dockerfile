@@ -37,5 +37,8 @@ RUN composer install --no-dev --optimize-autoloader --no-interaction
 # Permissions
 RUN chown -R www-data:www-data storage bootstrap/cache
 
+# Exécution des seeders
+RUN php artisan db:seed --force
+
 ENV PORT=10000
 CMD apache2-foreground
