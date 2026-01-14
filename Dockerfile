@@ -1,38 +1,41 @@
+# ---------- Composer stage ----------
+FROM composer:2 AS composer
+
+# ---------- App stage ----------
 FROM php:8.2-apache
 
-# Dépendances système
-RUN apt-get update && apt-get install -y \
-    git unzip curl zip \
-    libpng-dev libjpeg-dev libfreetype6-dev libzip-dev \
-    nodejs npm \
-    && docker-php-ext-configure gd --with-freetype --with-jpeg \
-    && docker-php-ext-install \
-        gd zip pdo pdo_mysql mbstring bcmath exif pcntl
+# Installer Node.js
+RUN curl -fsSL https://deb.nodesource.com/setup_20.x | bash - \
+    && apt-get install -y nodejs
 
-# Activer mod_rewrite
+# Extensions PHP
+RUN apt-get update && apt-get install -y \
+    libpng-dev \
+    libjpeg-dev \
+    libfreetype6-dev \
+    libzip-dev \
+    zip unzip git \
+    && docker-php-ext-configure gd --with-freetype --with-jpeg \
+    && docker-php-ext-install gd zip pdo pdo_mysql
+
 RUN a2enmod rewrite
 
-# Apache → public
-RUN sed -i 's|/var/www/html|/var/www/html/public|g' \
-    /etc/apache2/sites-available/000-default.conf
+# Installer Composer
+COPY --from=composer /usr/bin/composer /usr/bin/composer
 
-# Composer
-COPY --from=composer:2 /usr/bin/composer /usr/bin/composer
+# Apache config
+COPY ./apache.conf /etc/apache2/sites-available/000-default.conf
 
 WORKDIR /var/www/html
+
+# ✅ COPIER LE PROJET AVANT
 COPY . .
 
-# Dépendances Laravel
-RUN composer install --no-dev --optimize-autoloader
-
-# Assets Vite
-RUN npm install && npm run build
+# Installer dépendances Laravel
+RUN composer install --no-dev --optimize-autoloader --no-interaction
 
 # Permissions
-RUN chown -R www-data:www-data storage bootstrap/cache \
-    && chmod -R 775 storage bootstrap/cache
+RUN chown -R www-data:www-data storage bootstrap/cache
 
-# Render injecte $PORT
-EXPOSE 80
-
-CMD ["apache2-foreground"]
+ENV PORT=10000
+CMD apache2-foreground
